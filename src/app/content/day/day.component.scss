@@ -1,0 +1,41 @@
+.card-day {
+    width: 13%;
+    float: left;
+    margin-right: 10px;
+    position: relative;
+    top: 0;
+    height:80vh;
+    background: rgba(255, 255, 255, 0.35);
+    border: none;
+    .card-body {
+        padding-top: 0;
+        .day-name {
+            position: absolute;
+            background: transparent;
+            top: -20px;
+            margin: 0;
+            padding: 0 3px;
+            text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+        }
+        .card-task {
+            margin: 10px 0 0;
+            margin-top: 1vh;
+            background: rgba(255, 255, 255, 0.35);
+            border: none;
+            padding-top: 8px;
+            position: relative;
+            &:hover {
+              background: rgba(255, 255, 255, 0.4);
+            }
+            .task-category {
+              font-size: 20px;
+              position: absolute;
+              bottom: 10px;
+              right: 10px;
+            }
+            &:first-of-type {
+                margin-top: 0;
+            }
+        }
+    }
+}

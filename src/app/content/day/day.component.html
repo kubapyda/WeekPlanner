@@ -1,0 +1,20 @@
+<div class="card card-day">
+  <div class="card-body" [ngStyle]="{ paddingTop: calculateFirstTaskPosition() }">
+    <h2 class="day-name">{{ dayTasks.dayName }}</h2>
+    <div *ngFor="let task of dayTasks.tasks" class="card card-task" [ngStyle]="{ height: calculateTaskHeight(task) }" placement="top-left"
+      ngbTooltip="{{task.timeFrom + ' - ' + task.timeTo}}">
+      <div class="card-body">
+        {{task.name}}
+        <span class="badge badge-primary task-category" placement="top-right" ngbTooltip="Praca" *ngIf="task.category === 'work'">
+          <i class="fa fa-briefcase"></i>
+        </span>
+        <span class="badge badge-success task-category" placement="top-right" ngbTooltip="Szkoła" *ngIf="task.category === 'school'">
+          <i class="fa fa-graduation-cap"></i>
+        </span>
+        <span class="badge badge-warning task-category" placement="top-right" ngbTooltip="Czas wolny" *ngIf="task.category === 'free-time'">
+          <i class="fa fa-free-code-camp"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
