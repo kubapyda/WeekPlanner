@@ -1,4 +1,44 @@
-.wp-navbar {
-  margin: 0 -15px 40px -15px;
-  background-color: RGBA(47, 79, 79, 0.8) !important;
+/* Ibrahim Jabbari -- www.ibrahimjabbari.com */
+@import url(https://fonts.googleapis.com/css?family=Arvo:700);
+@import url(https://fonts.googleapis.com/css?family=Seaweed+Script);
+
+.navbar {
+  img {
+    width: 52px;
+    height: 52px;
+    margin-right: 20px;
+  }
+  .shadow {
+    float: right;
+    color: #fff;
+    font-family: Arvo;
+    font-weight: bold;
+    text-shadow:
+      -3px -3px 0 #222,
+      3px -3px 0 #222,
+      -3px 3px 0 #222,
+      3px 3px 0 #222,
+      4px 4px 0 dodgerblue,
+      5px 5px 0 dodgerblue,
+      6px 6px 0 dodgerblue,
+      7px 7px 0 dodgerblue;
+    line-height: 0.8em;
+    letter-spacing: 0.1em;
+    transform: scaleY(0.7);
+    -webkit-transform: scaleY(0.7);
+    -moz-transform: scaleY(0.7);
+    margin:0;
+    font-size: 65px;
+    text-align: center;
+  }
+  .wp-navbar {
+    margin: -5px -15px 40px -15px;
+    background-color: RGBA(47, 79, 79, 0.8) !important;
+    position: absolute;
+    display: flex;
+    right: 0;
+    width: 50%;
+    border-radius: 0 0 0 10px;
+    padding: 10px 15px 10px;
+  }
 }
