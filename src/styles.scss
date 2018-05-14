@@ -7,4 +7,10 @@ body {
   background-image: url('assets/background.jpg');
   background-size: cover;
   color: #fff;
+  font-weight: 500;
+  text-shadow: -1px 0 black, 0 1.5px black, 1.5px 0 black, 0 -1px black;
+  .btn-success {
+    background-color: #216931;
+    border-color: #216931;
+  }
 }

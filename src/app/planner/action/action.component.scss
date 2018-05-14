@@ -1,0 +1,114 @@
+div {
+  .btn-generate {
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+  }
+  .row {
+    width: 1000px;
+    margin: 0 auto;
+    padding: 40px 0 20px;
+    position: relative;
+    .free-days {
+      margin-right: 50px;
+    }
+    .checkbox-text {
+      display: inline-block;
+      position: relative;
+      padding-left: 35px;
+      margin: 6px;
+      cursor: pointer;
+      user-select: none;
+      input[type="checkbox"] {
+        position: absolute;
+        z-index: 10;
+        opacity: 0;
+        top: 0;
+        left: 0;
+        height: 25px;
+        cursor: pointer;
+        &:checked ~ .after-checkbox {
+          background-color: rgb(5, 67, 117);
+          &:after {
+            display: block;
+          }
+        }
+      }
+      .after-checkbox:after {
+        left: 9px;
+        top: 4px;
+        width: 8px;
+        height: 13px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        transform: rotate(45deg);
+      }
+      &:hover {
+        input ~ .after-checkbox {
+          background-color: #aaa;
+        }
+      }
+    }
+    input {
+      background-color: #668398;
+      border-color: #354c63;
+      color: #fff;
+      &:disabled {
+        background-color: darken(#668398, 10%);
+        // filter: brightness(75%);
+        // background-color: hsla(239, 60%, 23%, 0.5);
+        cursor: not-allowed;
+      }
+    }
+    &.filters {
+      margin-top: 20px;
+      padding: 20px 0 10px;
+      border: 1px solid #354c63;
+      .section-title {
+        position: absolute;
+        top: -20px;
+        background-color: transparent;
+        padding-left: 20px;
+      }
+    }
+    ul {
+      font-size: 25px;
+      width: 100%;
+      li {
+        border-bottom: 2px solid #354c63;
+        padding-bottom: 15px;
+        margin-bottom: 5px;
+        .remove {
+          position: absolute;
+          right: 10px;
+          font-size: 35px;
+          color: red;
+          transform: translateY(-10px);
+          cursor: pointer;
+          &:hover {
+            text-decoration: none;
+            color: darken(red, 10%);
+          }
+        }
+        .time {
+          position: absolute;
+          right: 80px;
+        }
+      }
+    }
+  }
+}
+
+.after-checkbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #ccc;
+  &:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+}

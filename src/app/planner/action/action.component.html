@@ -1,0 +1,47 @@
+<div>
+  <form #actionForm="ngForm" (ngSubmit)="addTask()">
+    <div class="row">
+      <div class="col-2">
+        <label>Dodaj zadanie</label>
+      </div>
+      <div class="col-3">
+        <input type="text" class="form-control" name="task" [(ngModel)]="taskForm.task">
+      </div>
+      <div class="col-3">
+        <label for="isTimeActive" class="checkbox-text">
+          Wprowadź czas
+          <input type="checkbox" name="isTimeActice" [(ngModel)]="taskForm.hasTime" class="form-control">
+          <span class="after-checkbox"></span>
+        </label>
+      </div>
+      <div class="col-3">
+        <input type="number" class="form-control" name="time" [(ngModel)]="taskForm.time" [disabled]="!taskForm.hasTime">
+      </div>
+      <div class="col-1">
+        <button type="submit" class="btn btn-success" [disabled]="!taskForm.task">Dodaj</button>
+      </div>
+    </div>
+    <div class="row filters">
+      <h3 class="section-title">Filtry</h3>
+      <div class="col">
+        <label class="free-days">Dni wolne</label>
+
+        <label for="{{day.name}}" class="checkbox-text" *ngFor="let day of days">
+          {{day.viewName}}
+          <input type="checkbox" name="{{day.name}}" [(ngModel)]="day.value" class="form-control">
+          <span class="after-checkbox"></span>
+        </label>
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <ul>
+      <li *ngFor="let task of tasks">
+        <span class="task">{{ task.task }}</span>
+        <span class="time">{{ task.time ? task.time + 'h' : '-' }}</span>
+        <a (click)="removeTask(task)" class="remove">&times;</a>
+      </li>
+    </ul>
+  </div>
+  <button class="btn btn-success btn-generate" [disabled]="!tasks.length" (click)="generateSchedule()">Wygeneruj harmonogram</button>
+</div>

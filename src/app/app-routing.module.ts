@@ -1,8 +1,10 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from "@angular/router";
 
+import { ActionComponent } from './planner/action/action.component';
 import { ContentComponent } from './content/content.component';
 import { PlannerComponent } from './planner/planner.component';
+import { RepeatableComponent } from './planner/repeatable/repeatable.component';
 
 const appRoutes: Routes = [
   {
@@ -10,7 +12,16 @@ const appRoutes: Routes = [
     component: ContentComponent
   }, {
     path: 'planner',
-    component: PlannerComponent
+    component: PlannerComponent,
+    children: [
+      {
+        path: 'repeatable',
+        component: RepeatableComponent
+      }, {
+        path: 'action',
+        component: ActionComponent
+      }
+    ]
   }
 ];
 

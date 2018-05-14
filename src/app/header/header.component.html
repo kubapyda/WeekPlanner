@@ -1,19 +1,21 @@
 <nav class="navbar">
   <div class="plate">
-    <img src="../../assets/tasks.png" alt="task">
-    <p class="shadow">WEEK PLANNER</p>
+    <a [routerLink]="['']">
+      <img src="../../assets/tasks.png" alt="task">
+      <p class="shadow">WEEK PLANNER</p>
+    </a>
   </div>
   <div class="search-and-navigation wp-navbar justify-content-between">
     <form class="form-inline">
       <div class="mr-2">
         <input class="form-control mr-sm-2" type="search" placeholder="Po czynności" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Szukaj</button>
+        <button class="btn btn-success my-2 my-sm-0" type="submit">Szukaj</button>
       </div>
       <div class="mr-2">
         <input class="form-control mr-sm-2" type="search" placeholder="Po dacie" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Szukaj</button>
+        <button class="btn btn-success my-2 my-sm-0" type="submit">Szukaj</button>
       </div>
     </form>
-    <button class="btn btn-warning" routerLink="planner">Przygotuj plan</button>
+    <button class="btn btn-warning" [routerLink]="['planner', 'repeatable']">Przygotuj plan</button>
   </div>
 </nav>

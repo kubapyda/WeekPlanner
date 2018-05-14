@@ -1,0 +1,43 @@
+.container {
+  .nav-action {
+    border-bottom: none;
+    li {
+      margin-left: 15px;
+      margin-bottom: 0;
+      background-color: rgba(255, 255, 255, .6);
+      border-radius: 7px 7px 0 0;
+      &.active {
+        background-color: rgba(255, 255, 255, .35);
+        a {
+          border-color: transparent;
+          font-weight: bold;
+          &:hover {
+            color: #fff;
+          }
+        }
+      }
+      a {
+        color: #fff;
+        &:focus {
+          border-color: transparent;
+        }
+        &:hover {
+          color: #ddd;
+          border-color: transparent;
+        }
+      }
+      &:first-child {
+        margin-left: 30px;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  .planner-content {
+    height: 80vh;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, .35);
+    position: relative;
+  }
+}

@@ -1,0 +1,52 @@
+<div>
+  <form #repeatableAction="ngForm" (ngSubmit)="addRepeatableAction()">
+    <div class="row form-row py-4">
+      <div class="col">
+        <label>Nazwa czynności powtarzalnej:</label>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" name="name" [(ngModel)]="action.name">
+      </div>
+    </div>
+    <div class="row form-row form-label">
+      <div class="col"></div>
+      <div class="col">Godzina od:</div>
+      <div class="col">Godzina do:</div>
+    </div>
+    <div class="row form-row" *ngFor="let day of action.weekDays; let index = index; trackBy: trackByIndex">
+      <div class="col">
+        <label>{{ day.name }}</label>
+      </div>
+      <div class="col">
+        <input type="text" id="day-time-from-{{index}}" class="form-control" name="time-from-{{index}}" [(ngModel)]="day.timeFrom">
+      </div>
+      <div class="col">
+        <input type="text" id="day-time-to-{{index}}" class="form-control" name="time-to-{{index}}" [(ngModel)]="day.timeTo">
+      </div>
+    </div>
+    <p class="text-right">
+      <button type="submit" class="btn btn-success" [disabled]="!action.name">Zapisz</button>
+    </p>
+  </form>
+  <div class="row">
+    <ul class="week-name-list">
+      <li></li>
+      <li *ngFor="let day of action.weekDays">
+        {{day.name}}
+      </li>
+    </ul>
+
+    <div class="repeatable-events">
+      <ul *ngFor="let action of actions; let i = index; trackBy: i">
+        <li>
+          {{ action.name }}
+          <i class="fa fa-trash remove-icon" (click)="removeAction(i)" placement="right" ngbTooltip="Usuń"></i>
+          <i class="fa fa-edit edit-icon" (click)="editAction(i)" placement="right" ngbTooltip="Edytuj"></i>
+        </li>
+        <li *ngFor="let day of action.weekDays">
+          {{day.timeFrom}}-{{day.timeTo}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
