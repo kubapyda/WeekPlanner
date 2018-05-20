@@ -19,7 +19,8 @@ export class DayComponent implements OnInit {
     tasks: Array<{
       name: string,
       timeFrom: string,
-      timeTo: string
+      timeTo: string,
+      category: string
     }>
   };
 
@@ -33,9 +34,11 @@ export class DayComponent implements OnInit {
   }
 
   calculateFirstTaskPosition() {
-    const firstTask = this.dayTasks.tasks[0].timeFrom;
-    let firstHour = (+this.firstHour.split(':')[0]) - 1;
-    return `${this.caluclateResult(firstTask, `${firstHour}:${this.firstHour.split(':')[1]}`)}vh`;
+    if (this.dayTasks.tasks.length) {
+      const firstTask = this.dayTasks.tasks[0].timeFrom;
+      let firstHour = (+this.firstHour.split(':')[0]) - 1;
+      return `${this.caluclateResult(firstTask, `${firstHour}:${this.firstHour.split(':')[1]}`)}vh`;
+    }
   }
 
   caluclateResult(timeTo, timeFrom) {

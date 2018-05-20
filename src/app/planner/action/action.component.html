@@ -26,7 +26,7 @@
       <div class="col">
         <label class="free-days">Dni wolne</label>
 
-        <label for="{{day.name}}" class="checkbox-text" *ngFor="let day of days">
+        <label for="{{day.name}}" class="checkbox-text" *ngFor="let day of scheduleGenerator.days">
           {{day.viewName}}
           <input type="checkbox" name="{{day.name}}" [(ngModel)]="day.value" class="form-control">
           <span class="after-checkbox"></span>
@@ -43,5 +43,5 @@
       </li>
     </ul>
   </div>
-  <button class="btn btn-success btn-generate" [disabled]="!tasks.length" (click)="generateSchedule()">Wygeneruj harmonogram</button>
+  <button class="btn btn-success btn-generate" [disabled]="!tasks.length" (click)="scheduleGenerator.generate()">Wygeneruj harmonogram</button>
 </div>

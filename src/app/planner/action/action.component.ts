@@ -1,52 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ScheduleGeneratorService } from './../../services/schedule-generator.service';
+
 @Component({
   selector: 'app-action',
   templateUrl: './action.component.html',
-  styleUrls: ['./action.component.scss']
+  styleUrls: ['./action.component.scss'],
+  providers: [ScheduleGeneratorService]
 })
 export class ActionComponent implements OnInit {
 
   tasks: Array<{ time: number, task: string }> = [];
-  days: Array<{ name: string, viewName: string, value: boolean }> = [
-    {
-      name: 'monday',
-      viewName: 'Pn',
-      value: false
-    }, {
-      name: 'tuesday',
-      viewName: 'Wt',
-      value: false
-    }, {
-      name: 'wednesday',
-      viewName: 'Śr',
-      value: false
-    }, {
-      name: 'thursday',
-      viewName: 'Czw',
-      value: false
-    }, {
-      name: 'friday',
-      viewName: 'Pt',
-      value: false
-    }, {
-      name: 'saturday',
-      viewName: 'Sb',
-      value: false
-    }, {
-      name: 'sunday',
-      viewName: 'Nd',
-      value: false
-    },
-  ];
-
   taskForm: { task: string, hasTime: boolean, time: number } = {
     task: '',
     hasTime: false,
     time: null
   };
 
-  constructor() { }
+  constructor(public scheduleGenerator: ScheduleGeneratorService) { }
 
   ngOnInit() {
     if (JSON.parse(localStorage.getItem('tasks'))) {
@@ -69,10 +40,6 @@ export class ActionComponent implements OnInit {
   removeTask(task: { time: number, task: string }) {
     const idx = this.tasks.indexOf(task);
     this.tasks.splice(idx, 1);
-  }
-
-  generateSchedule() {
-    console.log('generate');
   }
 
 }
