@@ -2,5 +2,5 @@
   <ul>
     <li *ngFor="let hour of time" [ngStyle]="{fontSize: calculateHourHeight() }">{{hour}}</li>
   </ul>
-  <app-day *ngFor="let day of weekTasks" [day]="day" [timeLength]="time.length - 2" [taskLength]="weekTasks.length" [firstHour]="firstHour"></app-day>
+  <app-day *ngFor="let day of contentService.weekTasks" [day]="day" [timeLength]="time.length - 2" [taskLength]="contentService.weekTasks.length" [firstHour]="firstHour"></app-day>
 </div>

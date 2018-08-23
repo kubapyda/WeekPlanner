@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ScheduleGeneratorService {
 
-  tasks: any = JSON.parse(localStorage.getItem('tasks'));
+  tasks: any = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : [];
   actions: any = JSON.parse(localStorage.getItem('actions'));
-  allTimeTasks: any = this.tasks.filter(task => task.time === 0);
+  allTimeTasks: any = this.tasks.filter(task => task.time === 0 || task.time === null);
   notAllTimeTasks: any = this.tasks.filter(task => task.time !== 0);
   freeTimes: any = [
     [], [], [], [], [], [], []
@@ -51,7 +51,8 @@ export class ScheduleGeneratorService {
     },
   ];
 
-  constructor() { }
+  constructor() {
+  }
 
   generate() {
     this.createScheduleForRepetableActions(this.actions, this.weekTasks);
@@ -70,7 +71,7 @@ export class ScheduleGeneratorService {
         if (day.timeFrom && day.timeTo) {
           _weekTasks[idx].tasks.push({
             name: action.name,
-            category: null, // TODO: !!!
+            category: action.category,
             timeFrom: day.timeFrom,
             timeTo: day.timeTo
           });
@@ -163,7 +164,7 @@ export class ScheduleGeneratorService {
             }
             _weekTasks[i].tasks.push({
               name: availableTasks[0].task,
-              category: null, // TODO: !!!
+              category: availableTasks[0].category,
               timeFrom: _freeTime[i][j].timeFrom,
               timeTo: taskPeriod
             });
@@ -192,26 +193,28 @@ export class ScheduleGeneratorService {
         if (i === 6 && _freeTime[i].length && !_weekTasks[i].tasks.length) {
           _weekTasks[i].tasks.push({
             name: this.allTimeTasks[0].task,
-            category: null, // TODO:
+            category: this.allTimeTasks[0].category,
             timeFrom: _freeTime[i][0].timeFrom,
             timeTo: _freeTime[i][0].timeTo
           });
         }
         if (timeForOneTask > 0) {
-          _weekTasks[i].tasks.push({
-            name: this.allTimeTasks[0].task,
-            category: null, // TODO:
-            timeFrom: _freeTime[i][0].timeFrom,
-            timeTo: _freeTime[i][0].timeTo
-          });
-          _freeTime[i].splice(0, 1);
+          if (this.allTimeTasks.length) {
+            _weekTasks[i].tasks.push({
+              name: this.allTimeTasks[0].task,
+              category: this.allTimeTasks[0].category,
+              timeFrom: _freeTime[i][0].timeFrom,
+              timeTo: _freeTime[i][0].timeTo
+            });
+            _freeTime[i].splice(0, 1);
+          }
         } else {
           this.allTimeTasks.splice(0, 1);
           let task;
           if (this.allTimeTasks.length) {
             _weekTasks[i].tasks.push({
               name: this.allTimeTasks[0].task,
-              category: null, // TODO:
+              category: this.allTimeTasks[0].category,
               timeFrom: _freeTime[i][0].timeFrom,
               timeTo: _freeTime[i][0].timeTo
             });
@@ -220,7 +223,7 @@ export class ScheduleGeneratorService {
             } else {
               task = {
                 name: this.allTimeTasks[0].task,
-                category: null, // TODO:
+                category: this.allTimeTasks[0].category,
                 timeFrom: _freeTime[i + 1][0].timeFrom,
                 timeTo: null
               };

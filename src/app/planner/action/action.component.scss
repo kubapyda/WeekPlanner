@@ -49,16 +49,9 @@ div {
         }
       }
     }
-    input {
-      background-color: #668398;
-      border-color: #354c63;
-      color: #fff;
-      &:disabled {
-        background-color: darken(#668398, 10%);
-        // filter: brightness(75%);
-        // background-color: hsla(239, 60%, 23%, 0.5);
-        cursor: not-allowed;
-      }
+    .add-btn {
+      position: absolute;
+      left: 0px;
     }
     &.filters {
       margin-top: 20px;

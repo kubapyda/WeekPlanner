@@ -1,13 +1,16 @@
 <div class="container">
-  <ul class="nav nav-tabs nav-action">
-    <li class="nav-item" routerLinkActive="active">
-      <a class="nav-link" [routerLink]="['repeatable']">Wydarzenia powtarzalne</a>
-    </li>
-    <li class="nav-item" routerLinkActive="active">
-      <a class="nav-link" [routerLink]="['action']">Czynności do wykonania</a>
-    </li>
-  </ul>
-  <div class="planner-content">
-    <router-outlet></router-outlet>
-  </div>
+    <ul class="nav nav-tabs nav-action">
+        <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" [routerLink]="['repeatable']">Wydarzenia powtarzalne</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" [routerLink]="['action']">Czynności do wykonania</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="loginService.canActivate()">
+            <a class="nav-link" [routerLink]="['categories']">Kategorie</a>
+        </li>
+    </ul>
+    <div class="planner-content">
+        <router-outlet></router-outlet>
+    </div>
 </div>

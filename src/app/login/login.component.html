@@ -1,0 +1,23 @@
+<form #loginForm="ngForm" (ngSubmit)="loginToApp()">
+  <div class="modal-header">
+    <h4 class="modal-title">Zaloguj się</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span class="close-btn" aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <div class="col mb-1">
+      <label>Nazwa użytkownika</label>
+      <input type="text" id="login-input" class="form-control" name="login" [(ngModel)]="data.login">
+    </div>
+    <div class="col">
+      <label>Hasło</label>
+      <input type="password" id="password-input" class="form-control" name="password" [(ngModel)]="data.password">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="activeModal.close('Close click')">Zamknij</button>
+    <button type="submit" class="btn btn-warning">Zaloguj</button>
+  </div>
+</form>
